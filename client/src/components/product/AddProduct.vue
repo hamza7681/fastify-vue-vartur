@@ -51,8 +51,15 @@
             class="w-full border border-[#a3d0e4] rounded-md pl-4 py-3 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
           />
         </div>
-        <div v-if="showImage" class="h-[200px] overflow-hidden">
-          <img :src="imageUrl" alt="Product_image" class="w-full" />
+        <div
+          v-if="showImage"
+          class="h-[200px] flex justify-center items-center border-[1px] p-2"
+        >
+          <img
+            :src="imageUrl"
+            alt="Product_image"
+            class="max-w-full max-h-full"
+          />
         </div>
         <div class="">
           <button

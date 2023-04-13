@@ -58,11 +58,11 @@
 
         <Column header="Image">
           <template #body="rowData">
-            <div class="h-[70px] overflow-hidden">
+            <div class="h-[70px] w-[100px] flex justify-center items-center">
               <img
                 :src="rowData.data.picture"
                 alt="hello"
-                class="w-[100px] rounded-[3px]"
+                class="max-w-full max-h-full rounded-[3px]"
               />
             </div>
           </template>
@@ -194,11 +194,18 @@ export default {
     },
     setCreatedDate(date) {
       const createdAt = new Date(date);
-      const formattedDate = createdAt.toLocaleDateString("en-US", {
+      const options = {
         day: "2-digit",
-        month: "short",
+        month: "2-digit",
         year: "numeric",
-      });
+        hour: "numeric",
+        minute: "numeric",
+        timeZone: "Asia/Karachi",
+        hour12: true,
+      };
+      const formattedDate = createdAt
+        .toLocaleDateString("en-US", options)
+        .replace(/(\d+)\/(\d+)\/(\d+)/, "$2/$1/$3");
       return formattedDate;
     },
     showTable() {
